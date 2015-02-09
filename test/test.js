@@ -4,6 +4,10 @@ var AVReciever = require('../lib/avreciever');
 describe('AVReciever', function(){
   var reciever = new AVReciever('10.0.1.3');
 
+  beforeEach(function() {
+    reciever.setPowerState(true);
+  });
+
   describe('#getStatus', function(){
     it('should return valid status', function(){
       return reciever.getState()
@@ -15,23 +19,13 @@ describe('AVReciever', function(){
   });
 
   describe('power functions', function() {
-    it('should power cycle', function() {
+    it('should power off', function() {
       this.timeout(4000)
-      var initialPowerState;
-      return reciever.getPowerState()
-      .then(function(isPoweredOn) {
-        initialPowerState = isPoweredOn;
-        console.log(isPoweredOn)
-        if (isPoweredOn) {
-          return reciever.powerOff();
-        } else {
-          return reciever.powerOn();
-        }
-      }).then(function() {
+      return reciever.setPowerState(false)
+      .then(function() {
         return reciever.getPowerState();
-      }).then(function(isPoweredOn) {
-        console.log(isPoweredOn)
-        isPoweredOn.should.not.eql(initialPowerState);
+      }).then(function(state) {
+        state.should.be.false
       });
     })
   });
@@ -63,6 +57,7 @@ describe('AVReciever', function(){
       }).then(function(muteState) {
         muteState.should.be.false;
       });
-    })
+    });
+
   });
 });
