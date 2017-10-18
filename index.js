@@ -1,1 +1,1 @@
-module.exports = require('./lib/avreciever');
+module.exports = require('./lib/avreceiver');

@@ -1,16 +1,16 @@
 var should = require('should');
-var AVReciever = require('../lib/avreciever');
+var AVReceiver = require('../lib/avreceiver');
 
-describe('AVReciever', function(){
-  var reciever = new AVReciever('10.0.1.3');
+describe('AVReceiver', function(){
+  var receiver = new AVReceiver('10.0.1.3');
 
   beforeEach(function() {
-    reciever.setPowerState(true);
+    receiver.setPowerState(true);
   });
 
   describe('#getStatus', function(){
     it('should return valid status', function(){
-      return reciever.getState()
+      return receiver.getState()
       .then(function(status) {
         status.should.have.property('power');
         status.should.have.property('mute');
@@ -21,9 +21,9 @@ describe('AVReciever', function(){
   describe('power functions', function() {
     it('should power off', function() {
       this.timeout(4000)
-      return reciever.setPowerState(false)
+      return receiver.setPowerState(false)
       .then(function() {
-        return reciever.getPowerState();
+        return receiver.getPowerState();
       }).then(function(state) {
         state.should.be.false
       });
@@ -32,7 +32,7 @@ describe('AVReciever', function(){
 
   describe('#getStateFor', function(){
     it('should return state for mute', function(){
-      return reciever.getStateFor('mute')
+      return receiver.getStateFor('mute')
       .then(function(state) {
         (state !== undefined).should.be.ok;
       });
@@ -42,18 +42,18 @@ describe('AVReciever', function(){
   describe('#setMuteState', function(){
     
     it('should set mute to true', function() {
-      return reciever.setMuteState(true)
+      return receiver.setMuteState(true)
       .then(function() {
-        return reciever.getMuteState();
+        return receiver.getMuteState();
       }).then(function(muteState) {
         muteState.should.be.true;
       });
     });
 
     it('should set mute to false', function(){
-      return reciever.setMuteState(false)
+      return receiver.setMuteState(false)
       .then(function(status) {
-        return reciever.getMuteState();
+        return receiver.getMuteState();
       }).then(function(muteState) {
         muteState.should.be.false;
       });
