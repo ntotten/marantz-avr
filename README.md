@@ -19,6 +19,7 @@ npm install marantz-avr
 let AVReceiver = require('marantz-avr');
 let receiver = new AVReceiver('ip_address');
 
+// True turns the receiver on / false off
 reciever.setPowerState(true).then(
     res => console.log(res), 
     error => console.log(error)
