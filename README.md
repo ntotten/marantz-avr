@@ -16,10 +16,12 @@ npm install marantz-avr
 ## Usage
 
 ```
-var AVReceiver = require('marantz-avr');
-var receiver = new AVReceiver('ip_address');
+let AVReceiver = require('marantz-avr');
+let receiver = new AVReceiver('ip_address');
 
-
-receiver.powerOn();
+reciever.setPowerState(true).then(
+    res => console.log(res), 
+    error => console.log(error)
+);
 ```
 
