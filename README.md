@@ -41,7 +41,7 @@ receiver.getState().then(
 );
 ```
 
-```json
+```
 {
   power: true,
   input: 'GAME',
