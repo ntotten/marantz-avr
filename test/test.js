@@ -1,5 +1,5 @@
 var should = require('should');
-var AVReceiver = require('../lib/avreceiver');
+var AVReceiver = require('../lib/avreceiver')
 
 describe('AVReceiver', function(){
   var receiver = new AVReceiver('10.0.1.3');
