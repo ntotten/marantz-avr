@@ -15,11 +15,39 @@ npm install marantz-avr
 
 ## Usage
 
+### setPowerState
+
+Turns the receiver on/off
+
+```js
+let AVReceiver = require('marantz-avr');
+let receiver = new AVReceiver('ip_address');
+
+// True turns the receiver on / false off
+receiver.setPowerState(true).then(
+    res => console.log(res), 
+    error => console.log(error)
+);
 ```
-var AVReceiver = require('marantz-avr');
-var receiver = new AVReceiver('ip_address');
 
+### getState
 
-receiver.powerOn();
+Returns the state of the receiver
+
+```
+receiver.getState().then(
+    res => console.log(res), 
+    error => console.log(error)
+);
+```
+
+```
+{
+  power: true,
+  input: 'GAME',
+  volumeLevel: '-33.0',
+  mute: false,
+  surroundMode: 'DIRECT' 
+}
 ```
 
